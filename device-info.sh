@@ -29,16 +29,11 @@ arm_type=$(uname -m | grep -oE 'armv7|aarch64' || echo "Unknown")
 # Get Android version
 android_version=$(getprop ro.build.version.release)
 
-# Define the HTTP request data
-http_request="POST /device_info.php HTTP/1.1\r\n"
-http_request+="Host: strp.cloud\r\n"
-http_request+="Content-Type: application/x-www-form-urlencoded\r\n"
-http_request+="X-API-KEY: $api_key\r\n"
-http_request+="\r\n"
-http_request+="manufacturer=$manufacturer&model=$model&arm_type=$arm_type&android_version=$android_version&unique_id=$unique_id"
-
-# Send the HTTP request using netcat (nc)
-echo -e "$http_request" | nc strp.cloud 80
+# Send device information using curl
+curl -sS -X POST \
+     -H "X-API-KEY: $api_key" \
+     -d "manufacturer=$manufacturer&model=$model&arm_type=$arm_type&android_version=$android_version&unique_id=$unique_id" \
+     https://strp.cloud/device_info.php
 
 # Check if the request was successful
 if [ $? -eq 0 ]; then
