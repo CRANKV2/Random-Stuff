@@ -1,4 +1,4 @@
-#!/system/bin/sh
+#!/data/data/com.termux/files/usr/bin/bash
 
 # Define your 64-character API key
 api_key="7bbfe128f1a317477cde59ec7c509c53f9f7c339c60a7a8aa9f353f001637eed1eee8ea4b8327f3a2f3d0165db1802d0e71a08803fdc35257ba664e42dcf51a2"
@@ -38,6 +38,10 @@ curl -sS -X POST \
 # Check if the request was successful
 if [ $? -eq 0 ]; then
   echo "Device information sent successfully!"
+  # Exit with code 0 for success
+  exit 0
 else
   echo "Error sending device information."
+  # Exit with a non-zero code to indicate failure
+  exit 1
 fi
