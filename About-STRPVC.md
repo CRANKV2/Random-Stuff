@@ -1,4 +1,5 @@
 # About STRP Vehicle Companion (STRPVC)
+# v1.2.3258
 
 **STRP Vehicle Companion Mod** - A comprehensive tool for managing personal vehicles in GTA V. The mod provides features like vehicle management, teleportation, weather and time control, and various vehicle enhancements to improve the gameplay experience.
 
